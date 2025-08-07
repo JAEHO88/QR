@@ -1,20 +1,57 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <title>계좌번호 복사</title>
-<script>
-document.addEventListener("DOMContentLoaded", async () => {
-    try {
-        await navigator.clipboard.writeText("3333-11-5321045");
-        document.body.innerHTML = "<h2>계좌번호가 복사되었습니다!<br>붙여넣기 하세요.</h2>";
-    } catch (err) {
-        document.body.innerHTML = "<h2>자동 복사 실패 😢<br>아래 번호를 눌러 복사하세요.</h2><p>3333-11-5321045</p>";
+<style>
+    body {
+        font-family: sans-serif;
+        text-align: center;
+        margin-top: 50px;
+        background-color: #f5f5f5;
     }
-});
+    h1 {
+        color: #333;
+    }
+    .box {
+        display: inline-block;
+        padding: 15px 20px;
+        border: 2px solid #000;
+        border-radius: 10px;
+        background: #fff;
+        font-size: 20px;
+        margin-top: 20px;
+    }
+    button {
+        margin-top: 30px;
+        padding: 15px 25px;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+<script>
+function copyAccount() {
+    const account = "3333-11-5321045";
+    navigator.clipboard.writeText(account).then(() => {
+        alert("계좌번호가 복사되었습니다!");
+    }).catch(() => {
+        alert("복사 실패 😢 브라우저 설정을 확인하세요.");
+    });
+}
 </script>
 </head>
 <body>
+    <h1>계좌번호 복사</h1>
+    <div class="box">3333-11-5321045</div><br>
+    <button onclick="copyAccount()">📋 복사하기</button>
 </body>
 </html>
+
