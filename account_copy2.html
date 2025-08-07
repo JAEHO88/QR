@@ -40,11 +40,25 @@
 <script>
 function copyAccount() {
     const account = "3333-25-0216310";
-    navigator.clipboard.writeText(account).then(() => {
-        alert("계좌번호가 복사되었습니다!");
-    }).catch(() => {
-        alert("복사 실패 😢 브라우저 설정을 확인하세요.");
-    });
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(account).then(() => {
+            alert("계좌번호가 복사되었습니다!");
+        }).catch(() => {
+            alert("복사 실패 😢 브라우저 설정을 확인하세요.");
+        });
+    } else {
+        const textArea = document.createElement("textarea");
+        textArea.value = account;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+            document.execCommand('copy');
+            alert("계좌번호가 복사되었습니다!");
+        } catch (err) {
+            alert("복사 실패 😢 브라우저 설정을 확인하세요.");
+        }
+        document.body.removeChild(textArea);
+    }
 }
 </script>
 </head>
