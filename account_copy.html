@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>계좌번호 복사</title>
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+    try {
+        await navigator.clipboard.writeText("3333-11-5321045");
+        document.body.innerHTML = "<h2>계좌번호가 복사되었습니다!<br>붙여넣기 하세요.</h2>";
+    } catch (err) {
+        document.body.innerHTML = "<h2>자동 복사 실패 😢<br>아래 번호를 눌러 복사하세요.</h2><p>3333-11-5321045</p>";
+    }
+});
+</script>
+</head>
+<body>
+</body>
+</html>
